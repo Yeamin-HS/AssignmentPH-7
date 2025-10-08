@@ -31,7 +31,7 @@ export default function TaskStatus({ inProgressTickets, resolvedTickets, onCompl
                         e.stopPropagation();
                         onComplete(ticket.id);
                       }}
-                      className="w-full bg-emerald-500 text-white py-2.5 rounded-lg hover:bg-emerald-600 transition text-sm font-semibold">
+                      className="w-full bg-green-700 text-white py-2.5 rounded-lg hover:bg-green-500 transition text-sm font-semibold">
                       Complete
                     </button>
                   </div>
@@ -61,12 +61,12 @@ export default function TaskStatus({ inProgressTickets, resolvedTickets, onCompl
             ) : (
               <div className="space-y-3">
                 {resolvedTickets.map(ticket => (
-                  <div key={ticket.id} className="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
+                  <div key={ticket.id} className="bg-green-50 rounded-lg border border-green-300 p-3 w-sm mb-3 hover:shadow-md transition">
                     <div className="flex items-start gap-2">
                       <svg className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <h4 className="font-medium text-gray-900 text-sm">{ticket.title}</h4>
+                      <h4 className="align-middle font-medium text-gray-900 text-m">{ticket.title}</h4>
                     </div>
                   </div>
                 ))}

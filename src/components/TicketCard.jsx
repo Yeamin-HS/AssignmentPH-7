@@ -24,7 +24,7 @@ export default function TicketCard({ ticket, onClick }) {
       
       <div className="flex items-center justify-between gap-4 text-sm">
         <div className="flex items-center gap-3">
-          <span className="text-gray-700 font-medium">#{ticket.id.toString().padStart(4, '0')}</span>
+          <span className="text-black-200 font-medium">#{ticket.id.toString().padStart(4, '0')}</span>
           <span className={`px-3 py-1 rounded-md text-xs font-semibold ${getPriorityColor(ticket.priority)}`}>
             {ticket.priority}
           </span>
