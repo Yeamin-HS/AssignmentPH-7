@@ -1,35 +1,78 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import Navbar from './components/Navbar';
+import Banner from './components/Banner';
+import TicketCard from './components/TicketCard';
+import TaskStatus from './components/TaskStatus';
+import Toast from './components/Toast';
+import Footer from './components/Footer';
+import { initialTickets } from './data/ticketsData';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [tickets, setTickets] = useState(initialTickets);
+  const [inProgressTickets, setInProgressTickets] = useState([]);
+  const [resolvedTickets, setResolvedTickets] = useState([]);
+  const [toast, setToast] = useState(null);
+
+  const showToast = (message, type = 'success') => {
+    setToast({ message, type });
+  };
+
+  const handleAddToProgress = (ticket) => {
+    if (inProgressTickets.find(t => t.id === ticket.id)) {
+      showToast('This ticket is already in progress!', 'error');
+      return;
+    }
+    setInProgressTickets([...inProgressTickets, ticket]);
+    showToast(`"${ticket.title}" has been added to In-Progress!`, 'success');
+  };
+
+  const handleComplete = (ticketId) => {
+    const ticket = inProgressTickets.find(t => t.id === ticketId);
+    if (!ticket) return;
+
+    setInProgressTickets(inProgressTickets.filter(t => t.id !== ticketId));
+    setResolvedTickets([...resolvedTickets, ticket]);
+    setTickets(tickets.filter(t => t.id !== ticketId));
+    showToast(`"${ticket.title}" has been marked as resolved!`, 'success');
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="min-h-screen bg-gray-100">
+      {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
+      
+      <Navbar />
+      
+      <Banner 
+        inProgressCount={inProgressTickets.length} 
+        resolvedCount={resolvedTickets.length} 
+      />
 
-export default App
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Customer Tickets */}
+          <div className="lg:col-span-2">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Customer Tickets</h2>
+            <div className="space-y-4">
+              {tickets.map(ticket => (
+                <TicketCard 
+                  key={ticket.id} 
+                  ticket={ticket} 
+                  onClick={() => handleAddToProgress(ticket)} 
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Task Status Section */}
+          <TaskStatus 
+            inProgressTickets={inProgressTickets}
+            resolvedTickets={resolvedTickets}
+            onComplete={handleComplete}
+          />
+        </div>
+      </div>
+
+      <Footer />
+    </div>
+  );
+}
