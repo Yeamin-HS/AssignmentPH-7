@@ -23,7 +23,7 @@ export default function TicketCard({ ticket, onClick }) {
       onClick={onClick}
       className="bg-white rounded-lg border border-gray-200 p-5 hover:shadow-md transition-all cursor-pointer"
     >
-      {/* Header with Title and Status */}
+      
       <div className="flex items-start justify-between gap-3 mb-3">
         <h3 className="font-semibold text-gray-900 text-base flex-1 leading-tight">
           {ticket.title}
@@ -50,8 +50,7 @@ export default function TicketCard({ ticket, onClick }) {
             {getPriorityText(ticket.priority)}
           </span>
         </div>
-        
-        {/* Right side: Customer and Date */}
+    
         <div className="flex items-center gap-3 text-gray-600">
           <span className="text-sm">{ticket.customer}</span>
           <div className="flex items-center gap-1.5">

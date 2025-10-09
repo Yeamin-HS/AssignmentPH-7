@@ -5,7 +5,7 @@ export default function TaskStatus({ inProgressTickets, resolvedTickets, onCompl
     <div className="lg:col-span-1">
       <h2 className="text-2xl font-bold text-gray-900 mb-6">Task Status</h2>
       
-      {/* In Progress Section */}
+
       <div className="mb-6">
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
           <div className="bg-gray-50 px-5 py-4 border-b border-gray-200">

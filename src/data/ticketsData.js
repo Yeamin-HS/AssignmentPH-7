@@ -88,5 +88,5 @@ export const initialTickets = [
     priority: "MEDIUM PRIORITY",
     status: "Open",
     createdAt: "1/24/2024"
-  }
+  },
 ];
