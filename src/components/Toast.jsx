@@ -6,7 +6,6 @@ export default function Toast({ message, type, onClose }) {
     return () => clearTimeout(timer);
   }, [onClose]);
 
-  // Define colors and icons based on type
   const getToastStyles = () => {
     switch(type) {
       case 'error':
@@ -51,18 +50,17 @@ export default function Toast({ message, type, onClose }) {
         </div>
         
         <div className="flex items-center gap-3">
-          {/* Icon */}
+   
           <div className={`${styles.icon} text-white w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-bold text-sm`}>
             {styles.iconContent}
           </div>
           
-          {/* Message */}
+     
           <p className={`${styles.text} text-base font-medium flex-1`}>
             {message}
           </p>
         </div>
 
-        {/* Close button */}
         <button 
           onClick={onClose} 
           className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 transition"

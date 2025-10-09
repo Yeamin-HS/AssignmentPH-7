@@ -7,12 +7,11 @@ export default function Navbar() {
     <nav className="bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
+    
           <div className="flex items-center">
             <h1 className="text-2xl font-bold text-gray-900">CS — Ticket System</h1>
           </div>
-          
-          {/* Desktop Menu */}
+     
           <div className="hidden lg:flex items-center gap-10">
             <a href="#" className="text-gray-700 hover:text-gray-900 text-base font-medium transition">
               Home
@@ -37,7 +36,7 @@ export default function Navbar() {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
+  
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="lg:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition"
@@ -54,7 +53,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+
         {mobileMenuOpen && (
           <div className="lg:hidden pb-4 space-y-2">
             <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-gray-100 rounded text-base font-medium transition">

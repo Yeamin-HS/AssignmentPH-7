@@ -8,9 +8,9 @@ export default function Banner({ inProgressCount, resolvedCount }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           
-          {/* In-Progress Card */}
+        
           <div className="relative bg-gradient-to-r from-[#7C3AED] to-[#A78BFA] rounded-2xl p-12 text-white text-center overflow-hidden shadow-lg min-h-[200px] flex flex-col items-center justify-center">
-            {/* Background Vector Images */}
+         
             <img
               src={vector1}
               alt=""
@@ -31,8 +31,7 @@ export default function Banner({ inProgressCount, resolvedCount }) {
               alt=""
               className="absolute top-0 left-0 w-full h-full object-cover opacity-30 z-0"
             />
-            
-            {/* Content */}
+      
             <div className="relative z-10">
               <h3 className="text-xl font-semibold mb-4 opacity-95">In-Progress</h3>
               <div className="text-7xl font-bold">{inProgressCount}</div>
