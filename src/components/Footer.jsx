@@ -43,7 +43,7 @@ export default function Footer() {
               <h4 className="text-white font-semibold text-sm">Social Links</h4>
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 text-sm">
                 <a href="#" className="hover:text-white transition">🔗 @CS — Ticket System</a>
-                <a href="#" className="hover:text-white transition">📧 info@support.com</a>
+                <a href="mailto:yeaminhs11@gmail.com" className="hover:text-white transition">📧 yeaminhs11@gmail.com</a>
               </div>
             </div>
           </div>

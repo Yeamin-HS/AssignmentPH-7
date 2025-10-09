@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 * {
-  margin: 1;
+  margin:1;
   padding: 2;
   box-sizing: border-box;
 }
@@ -33,7 +33,7 @@ body {
   background: #555;
 }
 
-/* Animation */
+/* Toast slide down animation */
 @keyframes slide-down {
   from {
     transform: translateY(-100%);
@@ -47,4 +47,18 @@ body {
 
 .animate-slide-down {
   animation: slide-down 0.3s ease-out;
+}
+
+/* Progress bar animation */
+@keyframes progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+.animate-progress {
+  animation: progress 3s alternate-reverse ;
 }

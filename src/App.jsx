@@ -13,13 +13,13 @@ export default function App() {
   const [resolvedTickets, setResolvedTickets] = useState([]);
   const [toast, setToast] = useState(null);
 
-  const showToast = (message, type = 'success') => {
+  const showToast = (message, type = 'info') => {
     setToast({ message, type });
   };
 
   const handleAddToProgress = (ticket) => {
     if (inProgressTickets.find(t => t.id === ticket.id)) {
-      showToast('This ticket is already in progress!', 'error');
+      showToast('Ticket is already in progress!', 'info');
       return;
     }
     setInProgressTickets([...inProgressTickets, ticket]);
@@ -37,7 +37,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-50">
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
       
       <Navbar />
@@ -47,12 +47,14 @@ export default function App() {
         resolvedCount={resolvedTickets.length} 
       />
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 max-w-7xl">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Customer Tickets */}
+          {/* Customer Tickets Section - 2 columns in grid */}
           <div className="lg:col-span-2">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Customer Tickets</h2>
-            <div className="space-y-4">
+            <h2 className="text-xl font-bold text-gray-900 mb-6">Customer Tickets</h2>
+            
+            {/* Grid layout for tickets - 2 columns */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {tickets.map(ticket => (
                 <TicketCard 
                   key={ticket.id} 
